@@ -1,3 +1,28 @@
+import inquirer from "inquirer"; 
+import qr from "qr-image";
+import fs from "fs";
+
+const answers = await inquirer.prompt([
+  {
+    type: "input",
+    name: "URL",
+    message: "Type in your URL:"
+  }
+]);
+var qr_svg=qr.image(answers.URL);
+qr_svg.pipe(fs.createWriteStream("qr_img.png"));
+fs.writeFile("URL.txt", answers.URL, (err) => {
+  if (err) throw err;
+  console.log("Saved URL successfully!");
+});
+    // .catch((error)=>{
+    //     if(error.isTtyError){
+
+    //     }
+    //     else{
+
+    //     }
+    // });
 /* 
 1. Use the inquirer npm package to get user input.
 2. Use the qr-image npm package to turn the user entered URL into a QR code image.
