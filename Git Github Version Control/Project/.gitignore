@@ -1,0 +1,5 @@
+secrets.txt
+
+#this is a comment 
+#to ignore all the files from a particular extension use * 
+#example *.txt
